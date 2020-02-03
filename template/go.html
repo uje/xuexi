@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>没啥用的跳转页面</title>
+    <style>
+      body {
+        background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+      }
+
+      .content {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+        color: #58cffb;
+      }
+
+      .url {
+        border: none;
+        line-height: 36px;
+        font-size: 18px;
+        background: #abdcff;
+        width: 500px;
+        padding: 0 5px;
+        color: #3675b4;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .go {
+        display: block;
+        width: 100px;
+        line-height: 36px;
+        margin: 20px auto 0;
+        background: #3675b4;
+        color: #fff;
+        border: 0;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+
+      @media screen and (max-width: 720px) {
+        .content {
+          width: 90%;
+        }
+        .url {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <input
+          type="text"
+          class="url"
+          value=""
+          placeholder="输入关键词或链接"
+          autofocus
+        />
+        <button type="button" class="go">前往</button>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.go').onclick = function() {
+        const value = document.querySelector('.url').value;
+
+        if (value.startsWith('http')) {
+          window.open(location.href.replace('go', value));
+        } else {
+          location.href = `/https://www.google.com/search?hl=zh-CN&q=${encodeURIComponent(
+            value
+          )}`;
+        }
+      };
+
+      document.body.onkeypress = function(e) {
+        if (e.keyCode === 13) {
+          document.querySelector('.go').click();
+        }
+      };
+    </script>
+  </body>
+</html>
