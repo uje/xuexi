@@ -9,7 +9,7 @@
   "dependencies": {
     "file-type": "14.0.0",
     "mime": "latest",
-    "node-fetch": "2.3.0",
+    "node-fetch": "2.6.1",
     "url": "0.11.0"
   },
   "devDependencies": {
